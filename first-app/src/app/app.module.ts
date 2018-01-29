@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { GreeterComponent } from './greeter/greeter.component';
 import { CalculatorOneComponent } from './calculator/CalculatorOne.component';
+import { CalculatorTwoComponent } from './calculator/CalculatorTwo.component';
 
 @NgModule({
   declarations: [
     AppComponent
     , GreeterComponent
     , CalculatorOneComponent
+    , CalculatorTwoComponent
   ],
   imports: [
     BrowserModule
