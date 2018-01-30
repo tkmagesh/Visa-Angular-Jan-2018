@@ -37,4 +37,9 @@ export class BugStorageService{
 	remove(bug : IBug) : void {
 		this.storage.removeItem(bug.id.toString());
 	}
+	update(bug, data){
+		let updatedBug = {...bug, ...data};
+		this.save(updatedBug);
+		return updatedBug;
+	}
 }

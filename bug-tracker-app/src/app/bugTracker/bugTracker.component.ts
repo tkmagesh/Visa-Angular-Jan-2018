@@ -10,6 +10,7 @@ export class BugTrackerComponent{
 
 	bugs : IBug[] = [];
 	
+	bugToEdit : IBug ;
 	
 
 	sortBugBy : string = 'name';
@@ -32,6 +33,12 @@ export class BugTrackerComponent{
 			.filter(bug => bug.isClosed)
 			.forEach(closedBug => this.bugStorage.remove(closedBug))
 		this.bugs = this.bugs.filter(bug => !bug.isClosed);
+	}
+
+	onBugEditSaveClick(newBugName){
+		let editedBug = this.bugStorage.update(this.bugToEdit, {name : newBugName});
+		this.bugs = this.bugs.map(bug => bug === this.bugToEdit ? editedBug : bug);
+		this.bugToEdit = null;	
 	}
 	
 	

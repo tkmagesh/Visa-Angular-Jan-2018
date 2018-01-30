@@ -13,11 +13,17 @@
 <app-bug-edit (newBugAdded)="onNewBugAdded($event)"></app-bug-edit>
 <section class="list">
 	<ol>
-		<li *ngFor="let bug of ( bugs | sort:sortBugBy:sortBugDescending )">
-			<span class="bugname" 
-				(click)="onBugNameClick(bug)"
-				[ngClass]="{closed : bug.isClosed}"
-			>{{bug.name | trimText:40}}</span>
+		<li *ngFor="let bug of ( bugs | sort:sortBugBy:sortBugDescending )" (dblclick)="bugToEdit=bug">
+			<div *ngIf="bugToEdit === bug; else bugItemDisplay">
+				<input type="text" #txtBugEditName value="{{bug.name}}">
+				<input type="button" value="Save" (click)="onBugEditSaveClick(txtBugEditName.value)" >
+			</div>
+			<ng-template #bugItemDisplay>
+				<span class="bugname" 
+					(click)="onBugNameClick(bug)"
+					[ngClass]="{closed : bug.isClosed}"
+				>{{bug.name | trimText:40}}</span>
+			</ng-template>
 			<div class="datetime">[{{bug.createdAt | elapsed}}]</div>
 		</li>
 	</ol>
