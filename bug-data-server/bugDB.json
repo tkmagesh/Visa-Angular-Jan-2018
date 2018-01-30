@@ -9,8 +9,14 @@
     {
       "id": 13,
       "name": "Templates are not cached",
-      "isClosed": false,
+      "isClosed": true,
       "createdAt": "2018-01-18T09:38:36.962Z"
+    },
+    {
+      "id": 14,
+      "name": "Server comm failure",
+      "isClosed": false,
+      "createdAt": "2018-01-30T11:44:36.091Z"
     }
   ],
   "projects": [
