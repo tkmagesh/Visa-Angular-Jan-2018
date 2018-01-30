@@ -1,0 +1,38 @@
+{
+  "bugs": [
+    {
+      "id": 10,
+      "name": "Bug - 2",
+      "isClosed": false,
+      "createdAt": "2018-01-15T10:42:58.601Z"
+    },
+    {
+      "id": 11,
+      "name": "Bug - 5",
+      "isClosed": false,
+      "createdAt": "2018-01-15T10:43:01.103Z"
+    },
+    {
+      "id": 12,
+      "name": "Router is not routing",
+      "isClosed": false,
+      "createdAt": "2018-01-18T09:23:19.074Z"
+    },
+    {
+      "id": 13,
+      "name": "Templates are not cached",
+      "isClosed": false,
+      "createdAt": "2018-01-18T09:38:36.962Z"
+    }
+  ],
+  "projects": [
+    {
+      "id": "P102",
+      "name": "Bug Tracker"
+    },
+    {
+      "id": "P101",
+      "name": "Payroll Management"
+    }
+  ]
+}
