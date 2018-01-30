@@ -1,18 +1,6 @@
 {
   "bugs": [
     {
-      "id": 10,
-      "name": "Bug - 2",
-      "isClosed": false,
-      "createdAt": "2018-01-15T10:42:58.601Z"
-    },
-    {
-      "id": 11,
-      "name": "Bug - 5",
-      "isClosed": false,
-      "createdAt": "2018-01-15T10:43:01.103Z"
-    },
-    {
       "id": 12,
       "name": "Router is not routing",
       "isClosed": false,
@@ -23,6 +11,12 @@
       "name": "Templates are not cached",
       "isClosed": false,
       "createdAt": "2018-01-18T09:38:36.962Z"
+    },
+    {
+      "id": 14,
+      "name": "All Promises are not promising",
+      "isClosed": false,
+      "createdAt": "2018-01-30T10:40:38.428Z"
     }
   ],
   "projects": [
