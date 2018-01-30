@@ -23,27 +23,15 @@ export class BugTrackerComponent{
 	onCreateNewClick(){
 		let newBug = this.bugOperations.createNew(this.newBugName);
 		this.newBugName = '';
-		this.bugs.push(newBug);
+		this.bugs = [...this.bugs, newBug];
 	}
-	onBugNameClick(bug : IBug){
-		this.bugOperations.toggle(bug);
+	onBugNameClick(bugToToggle : IBug){
+		let toggledBug = this.bugOperations.toggle(bugToToggle);
+		this.bugs = this.bugs.map(bug => bug === bugToToggle ? toggledBug : bug);
 	}
 	onRemoveClosedClick(){
-		for(let index = this.bugs.length-1; index >=0; index--){
-			if (this.bugs[index].isClosed)
-				this.bugs.splice(index, 1);
-		}
+		this.bugs = this.bugs.filter(bug => !bug.isClosed);
 	}
-	getClosedCount(){
-		let closedCount = 0;
-		for(let index = 0, count = this.bugs.length; index < count; index++){
-			if (this.bugs[index].isClosed)
-				++closedCount;
-		}
-		return closedCount;
-	}
-	getDisplayName(str){
-		console.log('getDisplayName invoked');
-		return str.length < 30 ? str : str.substr(0,30) + '...';
-	}
+	
+	
 }
