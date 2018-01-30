@@ -12,6 +12,10 @@ export class BugTrackerComponent{
 	
 	newBugName : string = '';
 
+	sortBugBy : string = 'name';
+
+	sortBugDescending : boolean = false;
+
 	constructor(private bugOperations : BugOperationsService){
 		
 	}
