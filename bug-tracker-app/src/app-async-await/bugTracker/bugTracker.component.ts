@@ -22,42 +22,33 @@ export class BugTrackerComponent implements OnInit{
 		
 	}
 
-	ngOnInit(){
+	async ngOnInit(){
 		//this.bugs = this.bugStorage.getAll();
 		/*this.bugServer
 			.getAll()
 			.then(bugs => this.bugs = bugs);*/
-		//this.bugs = await this.bugServer.getAll();
-		this.bugServer
-			.getAll()
-			.subscribe(bugs => this.bugs = bugs);
+		this.bugs = await this.bugServer.getAll();
 	}
 	onNewBugAdded(newBug:IBug){
 		this.bugs = [...this.bugs, newBug];
 	}
-	onBugNameClick(bugToToggle : IBug){
-		this.bugServer
-			.toggle(bugToToggle)
-			.subscribe(toggledBug => this.bugs = this.bugs.map(bug => bug === bugToToggle ? toggledBug : bug));
+	async onBugNameClick(bugToToggle : IBug){
+		let toggledBug = await this.bugServer.toggle(bugToToggle);
+		this.bugs = this.bugs.map(bug => bug === bugToToggle ? toggledBug : bug);
 	}
 	onRemoveClosedClick(){
 		this.bugs
 			.filter(bug => bug.isClosed)
-			.forEach( closedBug => {
-					this.bugServer
-						.remove(closedBug)
-						.subscribe(() => this.bugs = this.bugs.filter(bug => bug.id !== closedBug.id));
+			.forEach(async (closedBug) => {
+				await this.bugServer.remove(closedBug);
+				this.bugs = this.bugs.filter(bug => bug.id !== closedBug.id);
 			});
 	}
 
-	onBugEditSaveClick(newBugName){
-		this.bugServer
-			.update(this.bugToEdit, {name : newBugName})
-			.subscribe(updatedBug => {
-				this.bugs = this.bugs.map(bug => bug.id === updatedBug.id ? updatedBug : bug);		
-				this.bugToEdit = null;		
-			})
-		
+	async onBugEditSaveClick(newBugName){
+		let updatedBug = await this.bugServer.update(this.bugToEdit, {name : newBugName});
+		this.bugs = this.bugs.map(bug => bug.id === updatedBug.id ? updatedBug : bug);		
+		this.bugToEdit = null;
 	}
 	
 	
