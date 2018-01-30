@@ -10,12 +10,15 @@ export class BugTrackerComponent{
 
 	bugs : IBug[] = [];
 	
+	newBugName : string = '';
+
 	constructor(private bugOperations : BugOperationsService){
 		
 	}
 
-	onCreateNewClick(bugName : string){
-		let newBug = this.bugOperations.createNew(bugName);
+	onCreateNewClick(){
+		let newBug = this.bugOperations.createNew(this.newBugName);
+		this.newBugName = '';
 		this.bugs.push(newBug);
 	}
 	onBugNameClick(bug : IBug){
@@ -34,5 +37,9 @@ export class BugTrackerComponent{
 				++closedCount;
 		}
 		return closedCount;
+	}
+	getDisplayName(str){
+		console.log('getDisplayName invoked');
+		return str.length < 30 ? str : str.substr(0,30) + '...';
 	}
 }
